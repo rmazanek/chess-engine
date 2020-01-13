@@ -4,11 +4,20 @@ namespace chess_engine
 {
   public class Team
   {
-    //White goes first
-    public Team(bool white)
+    public string Name {get; set;}
+    public bool IsWhite {get; set;}
+    
+    public Team(string name, bool isWhite)
     {
-      White = white;  
+    Name = name;
+    IsWhite = isWhite;
     }
-    public bool White {get;set;}
+
+    public Team()
+    {
+      Name = "White";
+      IsWhite = true;
+    }
+    
   }
 }

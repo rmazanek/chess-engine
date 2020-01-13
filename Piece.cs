@@ -6,7 +6,7 @@ namespace chess_engine
 {
   public class Piece
   {
-    public Piece(string name, int x, int y, int kills)
+    public Piece(string name, int x, int y, int kills, bool threatened, bool hasMoved)
     {
 
     }
@@ -24,5 +24,15 @@ namespace chess_engine
       "Queen",
       "King"
     };
+
+    public List<BoardCell> Move(Piece piece, BoardCell startPos, BoardCell move)
+    {
+      List<BoardCell> oneMove = new List<BoardCell> {
+        new BoardCell (startPos.X, startPos.Y,piece),
+        new BoardCell (startPos.X + move.X, startPos.Y + move.Y, piece)
+      };
+
+      return oneMove;
+    }
   }
 }
