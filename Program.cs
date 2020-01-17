@@ -4,41 +4,40 @@ using System.IO;
 
 namespace chess_engine
 {
-
     //Input, output, update board state
-
     class Program
     {
         static void Main(string[] args)
         {
             //Assign teams
-            Console.Write("Player Name: ");
-            string playerName = Console.ReadLine();
-            Team team = new Team(playerName,true);
+            //Console.Write("Player Name: ");
+            //string playerName = Console.ReadLine();
+            Team white = new Team();
+            Team black = new Team();
             Board board = new Board(true, false, false);
-
-            if(team.IsWhite && board.GameContinues)
-            {
-                //Send move
-                //Update and log board state
-            }
+            white.CreatePieces();
+            black.CreatePieces();
             
-            do
+            while (board.GameContinues)
             {
-                //Wait for move request
+                //White send move
+                white.Move(board);
+                //Update and log board state
+
+                //Wait for black move request
                 //Validate move
                 //Input move
+                black.Move(board);
                 //Update and log board state
-                
-
-                //Send move
-                //Update and log board state
-            } while (board.GameContinues);
+            } 
 
             //Validate move from last board state
             //Reconcile piece removals
-            //Evaluate inCheck status
-            
+            //Evaluate inCheck status       
+        }
+
+        public void MarryPiecestoBoard(Board board, List<Piece> pieces)
+        {
 
         }
     }

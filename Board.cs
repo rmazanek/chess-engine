@@ -6,9 +6,11 @@ namespace chess_engine
 {
   public class Board
   {
-      public bool CheckmateStatus {get; set;}
-      public bool CheckStatus {get; set;}
-      public bool GameContinues {get; set;}
+    public bool CheckmateStatus {get; set;}
+    public bool CheckStatus {get; set;}
+    public bool GameContinues {get; set;}
+    public List<BoardCell> BoardCells {get;}
+    public List<Piece> pieces {get; set;}
 
     public Board(bool gameContinues, bool checkmateStatus, bool checkStatus)
     {
@@ -16,8 +18,8 @@ namespace chess_engine
       CheckmateStatus = checkmateStatus;
       CheckStatus = checkStatus;
 
-
       List<BoardCell> BoardCells = new List<BoardCell>();
+
 
       for (int i = 1; i < 9; i++)
       {
@@ -27,8 +29,19 @@ namespace chess_engine
           BoardCells.Add(c);
         }
       }
+
+
+
+
     }
 
     public Queue<BoardCell> turnHistory = new Queue<BoardCell>();
+
+    //public Board State(Board board)
+    //{
+    //  
+    //  
+    //  return board;
+    //}
   }
 }

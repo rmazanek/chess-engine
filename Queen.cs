@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace chess_engine
 {
-  public class Rook : Piece
+  public class Queen : Piece
   {
     public int MoveDis {get; set;}
     public List<BoardCell> moves = new List<BoardCell>
@@ -13,7 +13,7 @@ namespace chess_engine
       //new BoardCell(0,-1,null),
       //new BoardCell(-1,0,null)
     };
-    public Rook(string name, int posX, int posY, int kills, bool threatened, bool hasMoved, Team team)
+    public Queen(string name, int posX, int posY, int kills, bool threatened, bool hasMoved, Team team)
       : base (name, posX, posY, kills, threatened, hasMoved, team){}
 
   }

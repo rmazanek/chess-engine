@@ -5,12 +5,7 @@ namespace chess_engine
 {
   public class Knight : Piece
   {
-    public Knight(string name, int x, int y, int kills, bool threatened, bool hasMoved) : base("Knight", x, y, kills, threatened, hasMoved)
-    {
-
-    }
-
-    public List<BoardCell> moveList = new List<BoardCell>
+    public List<BoardCell> moves = new List<BoardCell>
     {
       new BoardCell(2,1,null),
       new BoardCell(1,2,null),
@@ -22,5 +17,12 @@ namespace chess_engine
       new BoardCell(0,2,null)
     };
 
+    //Constructor
+    public Knight(string name, int posX, int posY, int kills, bool threatened, bool hasMoved, Team team) 
+      : base (name, posX, posY, kills, threatened, hasMoved, team){}
+    public override List<BoardCell> moveList(Piece p, List<BoardCell> boardCells)
+    {
+      return moves;
+    }
   }
 }

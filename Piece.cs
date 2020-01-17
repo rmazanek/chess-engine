@@ -4,35 +4,53 @@ using System.IO;
 
 namespace chess_engine
 {
-  public class Piece
+  public abstract class Piece
   {
-    public Piece(string name, int x, int y, int kills, bool threatened, bool hasMoved)
-    {
-
-    }
+    public string Name {get;set;}
+    public int PosX {get;set;}
+    public int PosY {get;set;}
+    public int Kills {get;set;}
+    public bool Threatened {get;set;}
+    public bool HasMoved {get;set;}
+    public Team Team {get;set;}
+    List<BoardCell> moves = new List<BoardCell>();
     
-    public void moveList(int xMove, int yMove)
+    //enum pieceTypes
+    //{
+    //  Pawn,
+    //  Rook,
+    //  Knight,
+    //  Bishop,
+    //  Queen,
+    //  King
+    //};
+
+    public Piece(string name, int posX, int posY, int kills, bool threatened, bool hasMoved, Team team)
     {
-      List<BoardCell> moves = new List<BoardCell>();
+      this.Name = name;
+      this.PosX = posX;
+      this.PosY = posY;
+      this.Kills = kills;
+      this.Threatened = threatened;
+      this.HasMoved = hasMoved;
+      this.Team = team;
+    }
+    public virtual List<BoardCell> moveList(Piece p, List<BoardCell> boardCells)
+    {
+      return moves;
     }
 
-    public List<string> pieceTypes = new List<string> {
-      "Pawn",
-      "Rook",
-      "Knight",
-      "Bishop",
-      "Queen",
-      "King"
-    };
-
-    public List<BoardCell> Move(Piece piece, BoardCell startPos, BoardCell move)
-    {
+    public string Move(BoardCell move)
+    {      
       List<BoardCell> oneMove = new List<BoardCell> {
-        new BoardCell (startPos.X, startPos.Y,piece),
-        new BoardCell (startPos.X + move.X, startPos.Y + move.Y, piece)
+        new BoardCell (this.PosX, this.PosY, this),
+        new BoardCell (this.PosX + move.X, this.PosY + move.Y, this)
       };
+      
+      this.PosX += move.X;
+      this.PosY += move.Y;
 
-      return oneMove;
+      return oneMove.ToString();
     }
   }
 }
